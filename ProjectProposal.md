@@ -20,6 +20,7 @@ We plan on utilizing two main sources of data during the course of this project:
 #### *What are the most important new skills / techniques you will have to learn to be successful in this project?  If you think some of these skills would be useful for us to cover in class, please indicate which ones.*
 
 In the course of this project, we will have to learn several key skills:
+
 1. Working with a potentially huge dataset. We haven’t done this before, and will have to navigate our way through some expected troubles we may encounter. Along with just being able to store a huge amount of data, we also need to figure out clever ways to clean it so that it can be used effectively. 
 2. Being creative with accessing difficult-to-retrieve data from sources like Twitter. Our worst case scenario, where we are unable to get historical Twitter data, will involve gathering our own Twitter dataset, which will be done as soon as possible if needed.
 3. Working more with the statistical side of the datasets. The papers we have read point out that there is a correlation between Twitter and stock data, however we want to jump in and see if we can make our own conclusions.
@@ -58,7 +59,7 @@ In the course of this project, we will have to learn several key skills:
 
 The biggest obstacle would likely be the fact that we may be scraping our own data, continuously. Getting a workable dataset that is both useful to what we are looking into and contains enough information is going to be tough, so we need to figure out the best course of action that will get us the most useful information.
 
-#### *Given each of your YOGAs (see here), in what ways is this project well-aligned with these goals, and in what ways is it misaligned?  If there are ways in which it is not well-aligned, please provide a potential strategy for bringing the project and your learning goals into better alignment.  There should be an individual section for each person on the team addressing the fit between the YOGA and the project topic.
+#### *Given each of your YOGAs (see here), in what ways is this project well-aligned with these goals, and in what ways is it misaligned?  If there are ways in which it is not well-aligned, please provide a potential strategy for bringing the project and your learning goals into better alignment.*
 ##### Patrick
 
 This project seems to align very well with my goals. My primary goal is to spend more time looking at outside research papers and contributions made from the community, which is well-aligned with this project in particular. There’s a lot of prior research that has been done in this space, and I’ve already found some great papers that have been just challenging enough such that I can gain a lot from them with some investment of time. Additionally, there seems to be a good amount of room for me to get better at documentation over the course of the project. There’s a lot to learn, a lot to do, which should indicate that there will be a lot to document. 
