@@ -1,0 +1,5 @@
+argparse==1.2.1
+pytz==2016.3
+simplejson==3.8.2
+wsgiref==0.1.2
+yahoo-finance==1.2.1
