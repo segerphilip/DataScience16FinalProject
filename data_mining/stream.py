@@ -14,14 +14,24 @@ class MyStreamListener(tweepy.StreamListener):
     def __init__(self):
         tweepy.StreamListener.__init__(self)
         self.counter = 0
-        # self.out = open('test.csv', 'w')
-        # self.writer = csv.writer(self.out)
+        self.tweets = []
+        self.out = open('test.csv', 'w')
+        self.writer = csv.writer(self.out)
 
     def on_status(self, status):
         self.counter+=1
-        print self.counter
-        print status.text
-        pprint.pprint(status._json)
+
+        tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
+                 status.user.name, status.user.followers_count, status.user.verified,
+                 status.user.statuses_count]
+        self.tweets.append(tweet)
+
+        print tweet
+
+        if self.counter%50 == 0:
+            self.writer.writerows(self.tweets)
+            self.tweets = []
+            print 'writing'
 
 if __name__ == "__main__":
 
