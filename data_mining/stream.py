@@ -19,6 +19,7 @@ class MyStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
         self.counter += 1
+        print self.counter
 
         tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
                  status.user.name, status.user.followers_count, status.user.verified,
