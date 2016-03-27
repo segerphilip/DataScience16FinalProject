@@ -15,23 +15,25 @@ class MyStreamListener(tweepy.StreamListener):
         tweepy.StreamListener.__init__(self)
         self.counter = 0
         self.tweets = []
-        self.out = open('test.csv', 'w')
-        self.writer = csv.writer(self.out)
+        self.handle = csv.writer(open('test.csv', 'a'))
 
     def on_status(self, status):
-        self.counter+=1
+        self.counter += 1
+        print self.counter
 
-        tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
-                 status.user.name, status.user.followers_count, status.user.verified,
-                 status.user.statuses_count]
-        self.tweets.append(tweet)
+        try: 
+            tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
+                     status.user.name, status.user.followers_count, status.user.verified,
+                     status.user.statuses_count]
 
-        print tweet
+            self.tweets.append([unicode(el).encode("utf-8") for el in tweet])
 
-        if self.counter%50 == 0:
-            self.writer.writerows(self.tweets)
+        except Exception, e:
+            print e 
+
+        if self.counter % 100 == 0:
+            self.handle.writerows(self.tweets)
             self.tweets = []
-            print 'writing'
 
 if __name__ == "__main__":
 
@@ -47,7 +49,10 @@ if __name__ == "__main__":
 
     api = tweepy.API(auth)
 
-    myStreamListener = MyStreamListener()
-    myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
-
-    myStream.filter(languages=["en"], locations=[-180,-90,180,90])
+    while True:
+        try:
+            myStreamListener = MyStreamListener()
+            myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
+            myStream.filter(languages=["en"], locations=[-180,-90,180,90])
+        except Exception, e:
+            continue
