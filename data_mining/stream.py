@@ -18,22 +18,24 @@ class MyStreamListener(tweepy.StreamListener):
         self.handle = csv.writer(open('test.csv', 'a'))
 
     def on_status(self, status):
-        self.counter += 1
-        print self.counter
+        print status.text
 
-        try: 
-            tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
-                     status.user.name, status.user.followers_count, status.user.verified,
-                     status.user.statuses_count]
+        # self.counter += 1
+        # print self.counter
 
-            self.tweets.append([unicode(el).encode("utf-8") for el in tweet])
+        # try: 
+        #     tweet = [status.created_at, status.timestamp_ms, status.text, status.place.country_code, 
+        #              status.user.name, status.user.followers_count, status.user.verified,
+        #              status.user.statuses_count]
 
-        except Exception, e:
-            print e 
+        #     self.tweets.append([unicode(el).encode("utf-8") for el in tweet])
 
-        if self.counter % 100 == 0:
-            self.handle.writerows(self.tweets)
-            self.tweets = []
+        # except Exception, e:
+        #     print e 
+
+        # if self.counter % 100 == 0:
+        #     self.handle.writerows(self.tweets)
+        #     self.tweets = []
 
 if __name__ == "__main__":
 
@@ -53,6 +55,6 @@ if __name__ == "__main__":
         try:
             myStreamListener = MyStreamListener()
             myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
-            myStream.filter(languages=["en"], locations=[-180,-90,180,90])
+            myStream.filter(track=['apple'])
         except Exception, e:
             continue
